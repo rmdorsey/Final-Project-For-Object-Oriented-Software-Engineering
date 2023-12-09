@@ -40,7 +40,8 @@ public class Customer {
     }
 
     public String statement() {
-        Enumeration rentals              = _rentalCart.getCartItemList().elements();
+        Enumeration rentals = _rentalCart.getCartItemList().elements();
+        Enumeration sales = _soldItemCart.getCartItemList().elements(); //(not rentals)
         String      viewResult               = "Rental Record for " + getName() + "\n";
 
         while (rentals.hasMoreElements()) {
@@ -50,13 +51,21 @@ public class Customer {
             viewResult += getFiguresForRental(each.getSalesItem().getTitle(), each.getCost(), false);
         }
 
+        while (sales.hasMoreElements()) {
+            SoldItem each = (SoldItem) sales.nextElement();
+
+            // show figures for this rental
+            viewResult += getFiguresForSoldItem(each.getSalesItem().getTitle(), each.getCost(), false);
+        }
+
         // add footer lines
         viewResult += getFooterLines(_shoppingCart.getCartCostTotal(), _shoppingCart.getCartPointsTotal(), false);
         return viewResult;
     }
 
     public String statementInXML() {
-        Enumeration rentals              = _rentalCart.getCartItemList().elements();
+        Enumeration rentals = _rentalCart.getCartItemList().elements();
+        Enumeration sales = _soldItemCart.getCartItemList().elements(); //(not rentals)
         String      viewResult               = "<name>" + getName() + "</name>\n";
 
         while (rentals.hasMoreElements()) {
@@ -67,32 +76,52 @@ public class Customer {
             viewResult += getFiguresForRental(each.getSalesItem().getTitle(), each.getCost(), true);
         }
 
+        while (sales.hasMoreElements()) {
+            SoldItem each = (SoldItem) sales.nextElement();
+
+            // show figures for this rental
+            viewResult += getFiguresForSoldItem(each.getSalesItem().getTitle(), each.getCost(), true);
+        }
+
         // add footer lines
         viewResult += getFooterLines(_shoppingCart.getCartCostTotal(), _shoppingCart.getCartPointsTotal(), true);
         return viewResult;
     }
 
-    private String getFiguresForRental(String _movieTitle, double _rentalAmount, boolean xmlFmt) {
+    private String getFiguresForRental(String _rentalTitle, double _rentalAmount, boolean xmlFmt) {
         String figuresForRental = "";
 
         if(xmlFmt) {
-            figuresForRental += "<movie>\n\t<title>" + _movieTitle + "</title>\n\t<rentalcost>" + _rentalAmount + "</rentalcost>\n</movie>\n";
+            figuresForRental += "<rental>\n\t<title>" + _rentalTitle + "</title>\n\t<cost>$" + String.format("%.02f",_rentalAmount) + "</cost>\n</rental>\n";
         } else {
-            figuresForRental += "\t" + _movieTitle +
-                    "\t" + String.valueOf(_rentalAmount) + "\n";
+            figuresForRental += "(RENTAL)\t$" + String.format("%.02f",_rentalAmount) +
+                    "\t    " + _rentalTitle + "\n";
         }
 
         return figuresForRental;
+    }
+
+    private String getFiguresForSoldItem(String _itemTitle, double _salesAmount, boolean xmlFmt) {
+        String figuresForSoldItem = "";
+
+        if(xmlFmt) {
+            figuresForSoldItem += "<solditem>\n\t<title>" + _itemTitle + "</title>\n\t<cost>$" + String.format("%.02f",_salesAmount) + "</cost>\n</solditem>\n";
+        } else {
+            figuresForSoldItem += "(SOLD)    \t$" + String.format("%.02f",_salesAmount) +
+                    "\t    " + _itemTitle + "\n";
+        }
+
+        return figuresForSoldItem;
     }
 
     private String getFooterLines(double _totalAmount, int _frequentRenterPoints, boolean xmlFmt) {
         String footer = "";
 
         if(xmlFmt) {
-            footer += "<footer>\n\t<amountowed>" + String.valueOf(_totalAmount) + "</amountowed>\n";
+            footer += "<footer>\n\t<amountowed>$" + String.format("%.02f",_totalAmount) + "</amountowed>\n";
             footer += "\t<pointsearned>" + String.valueOf(_frequentRenterPoints) + "</pointsearned>\n</footer>";
         } else {
-            footer += "Amount owed is " + String.valueOf(_totalAmount) + "\n";
+            footer += "\nAmount owed is $" + String.format("%.02f",_totalAmount) + "\n";
             footer += "You earned " + String.valueOf(_frequentRenterPoints) +
                     " frequent renter points";
         }
