@@ -58,7 +58,6 @@ public class ShoppingCart implements IShoppingCart {
     public double getCartCostTotal() {
         double cartCostTotal = 0;
         for (ShoppingCart shoppingCart : getCartCategoryList()) {
-//            System.out.println(headEmployee);
 
             for (ISalesItem item : shoppingCart.getCartItemList()) {
                 cartCostTotal += item.getCost();
@@ -70,7 +69,6 @@ public class ShoppingCart implements IShoppingCart {
     public int getCartPointsTotal() {
         int cartPointsTotal = 0;
         for (ShoppingCart shoppingCart : getCartCategoryList()) {
-//            System.out.println(headEmployee);
 
             for (ISalesItem item : shoppingCart.getCartItemList()) {
                 cartPointsTotal += item.getPoints();

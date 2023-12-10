@@ -16,8 +16,6 @@ public class Coupon3Decorator extends CouponDiscountDecorator {
 
         for (ShoppingCart shoppingCart : getCartCategoryList()) {
             for (ISalesItem item : shoppingCart.getCartItemList()) {
-                System.out.println(item.getPriceCode());
-                System.out.println(item.isRental());
 
                 if(cartPoints>=10 && (item.getPriceCode()==SalesItem.REGULAR_MOVIE || item.getPriceCode()==SalesItem.NEW_RELEASE_MOVIE || item.getPriceCode()==SalesItem.CHILDRENS_MOVIE) && item.isRental()) {
                     //deduct 10 points after they're used for a free item
