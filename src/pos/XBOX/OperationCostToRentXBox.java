@@ -1,6 +1,8 @@
-package pos.PS4;
+package pos.XBOX;
+
 import Interfaces.IRentStrategy;
-public class OperationCostToRentPS4 implements IRentStrategy {
+
+public class OperationCostToRentXBox implements IRentStrategy {
     private double rentalAmount = 0;
     private double discount = 0;
     private int discountThreshold = 0;

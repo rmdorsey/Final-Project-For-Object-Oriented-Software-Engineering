@@ -10,7 +10,7 @@ public class OperationSellPS4  implements ISellStrategy {
     @Override
     public double calculateSellPrice(int priceType) {
         double cost = 0;
-        if(priceType== SalesItem.SELL_WHOLESALE_PRICE) {
+        if(priceType==SalesItem.SELL_WHOLESALE_PRICE) {
             cost = wholeSalePrice;
         } else {
             cost = msrpPrice;

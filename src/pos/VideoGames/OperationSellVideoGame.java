@@ -1,6 +1,7 @@
-package pos;
+package pos.VideoGames;
 
 import Interfaces.ISellStrategy;
+import pos.SalesItem;
 
 public class OperationSellVideoGame implements ISellStrategy {
     private double wholeSalePrice = 25.00;

@@ -5,6 +5,7 @@ import pos.Books.OperationSellBook;
 import pos.CDs.OperationSellMusicCD;
 import pos.Movies.OperationSellMovie;
 import pos.PS4.OperationSellPS4;
+import pos.VideoGames.OperationSellVideoGame;
 import pos.XBOX.OperationSellXBox;
 
 public class SellStrategyFactory {
