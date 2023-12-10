@@ -37,11 +37,6 @@ public class Main {
         SalesItem vg_aceCombat = new SalesItemVideoGame("Ace Combat");
 
         //RENTALS
-        //MOVIES RENTED
-        customer.addRental(new Rental(movie_independent_day, 2));
-        customer.addRental(new Rental(movie_home_alone, 2));
-        customer.addRental(new Rental(movie_last_unicorn, 2));
-        customer.addRental(new Rental(movie_avatar_2, 3));
         //GAME SYSTEMS RENTED
         customer.addRental(new Rental(xbox, 2));
         customer.addRental(new Rental(ps4, 2));
@@ -54,6 +49,12 @@ public class Main {
         //MUSIC CDs RENTED
         customer.addRental(new Rental(cd_aceOfBase,2));
         customer.addRental(new Rental(cd_countryGrammar, 2));
+        //MOVIES RENTED
+        customer.addRental(new Rental(movie_independent_day, 2));
+        customer.addRental(new Rental(movie_home_alone, 2));
+        customer.addRental(new Rental(movie_last_unicorn, 2));
+        customer.addRental(new Rental(movie_avatar_2, 3));
+        customer.addRental(new Rental(movie_independent_day, 3));
 
 
         //SOLD ITEMS
@@ -73,7 +74,7 @@ public class Main {
         //MUSIC CDs SOLD
         customer.addSoldItem(new SoldItem(cd_aceOfBase,SalesItem.SELL_MSRP_PRICE));
         customer.addSoldItem(new SoldItem(cd_countryGrammar,SalesItem.SELL_MSRP_PRICE));
-        
+
         System.out.println(customer.statement());
 //        System.out.println(customer.statementInXML());
 
