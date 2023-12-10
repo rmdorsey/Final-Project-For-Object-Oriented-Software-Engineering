@@ -43,23 +43,26 @@ public class Main {
 
         //RENTALS
         //MOVIES RENTED
-        customer.addRental(new Rental(movie_independent_day, 2));
-        customer.addRental(new Rental(movie_home_alone, 2));
-        customer.addRental(new Rental(movie_last_unicorn, 2));
-        customer.addRental(new Rental(movie_avatar_2, 3));
-        customer.addRental(new Rental(movie_last_unicorn, 2));
-        customer.addRental(new Rental(movie_last_unicorn, 2));
-        customer.addRental(new Rental(movie_last_unicorn, 2));
-        customer.addRental(new Rental(movie_last_unicorn, 2));
-        customer.addRental(new Rental(movie_last_unicorn, 2));
-        customer.addRental(new Rental(movie_last_unicorn, 2));
-        customer.addRental(new Rental(movie_last_unicorn, 2));
+//        customer.addRental(new Rental(movie_independent_day, 2));
+//        customer.addRental(new Rental(movie_home_alone, 2));
+//        customer.addRental(new Rental(movie_last_unicorn, 2));
+//        customer.addRental(new Rental(movie_avatar_2, 3));
+//        customer.addRental(new Rental(movie_last_unicorn, 2));
+//        customer.addRental(new Rental(movie_last_unicorn, 2));
+//        customer.addRental(new Rental(movie_last_unicorn, 2));
+//        customer.addRental(new Rental(movie_last_unicorn, 2));
+//        customer.addRental(new Rental(movie_last_unicorn, 2));
+//        customer.addRental(new Rental(movie_last_unicorn, 2));
+//        customer.addRental(new Rental(movie_last_unicorn, 2));
         //PS4 RENTED
-        customer.addRental(new Rental(ps4, 2));
+        customer.addRental(new Rental(xbox, 2));
+
+        //VG Rented
+        //customer.addRental(new Rental(xbox,4));
 
         //SOLD ITEMS
         //PS4 SOLD
-        customer.addSoldItem(new SoldItem(ps4,SalesItem.SELL_MSRP_PRICE));
+//        customer.addSoldItem(new SoldItem(ps4,SalesItem.SELL_MSRP_PRICE));
 
         System.out.println(customer.statement());
         //System.out.println(customer.statementInXML());
