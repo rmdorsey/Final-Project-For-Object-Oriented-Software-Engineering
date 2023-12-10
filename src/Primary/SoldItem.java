@@ -10,6 +10,7 @@ public class SoldItem implements ISalesItem {
     private double soldItemCost = 0;
     private int points = 0;
     private int priceType;
+    private boolean isRental = false;
     public SoldItem(SalesItem salesItem, int priceType) {
         _salesItem      = salesItem;
         this.priceType = priceType;
@@ -49,5 +50,11 @@ public class SoldItem implements ISalesItem {
 
     public int getPoints() {
         return points;
+    }
+    public int getPriceCode() {
+        return getSalesItem().getPriceCode();
+    }
+    public boolean isRental() {
+        return isRental;
     }
 }

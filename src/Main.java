@@ -13,7 +13,7 @@ import Primary.SoldItem;
 public class Main {
 
     public static void main(String[] args) {
-        Customer customer = new Customer("Matt Dorsey", ShoppingCart.NO_COUPON);
+        Customer customer = new Customer("Matt Dorsey", ShoppingCart.FREE_MOVIE_AFTER_10_POINTS);
         SalesItem movie_independent_day = new RegularMovie("Independence Day");
         SalesItem movie_home_alone = new RegularMovie("Home Alone");
         SalesItem movie_last_unicorn = new ChildrensMovie("The Last Unicorn");
@@ -23,13 +23,21 @@ public class Main {
 
         //RENTALS
         //MOVIES RENTED
-        customer.addRental(new Rental(movie_independent_day, 3));
+        customer.addRental(new Rental(movie_independent_day, 2));
         customer.addRental(new Rental(movie_home_alone, 2));
         customer.addRental(new Rental(movie_last_unicorn, 2));
         customer.addRental(new Rental(movie_avatar_2, 3));
+        customer.addRental(new Rental(movie_last_unicorn, 2));
+        customer.addRental(new Rental(movie_last_unicorn, 2));
+        customer.addRental(new Rental(movie_last_unicorn, 2));
+        customer.addRental(new Rental(movie_last_unicorn, 2));
+        customer.addRental(new Rental(movie_last_unicorn, 2));
+        customer.addRental(new Rental(movie_last_unicorn, 2));
         //PS4 RENTED
         customer.addRental(new Rental(ps4, 2));
 
+//        customer.addRental(new Rental(movie_avatar_2, 3));
+//        customer.addRental(new Rental(movie_last_unicorn, 2));
         //SOLD ITEMS
         //PS4 SOLD
         customer.addSoldItem(new SoldItem(ps4,SalesItem.SELL_MSRP_PRICE));

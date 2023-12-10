@@ -13,6 +13,7 @@ public class Rental implements ISalesItem {
     private int   _daysRented;
     private double rentalCost = 0;
     private int rentalPoints = 0;
+    private boolean isRental = true;
     public Rental(SalesItem salesItem, int daysRented) {
         _salesItem      = salesItem;
         _daysRented = daysRented;
@@ -50,5 +51,12 @@ public class Rental implements ISalesItem {
 
     public int getPoints() {
         return rentalPoints;
+    }
+
+    public int getPriceCode() {
+        return getSalesItem().getPriceCode();
+    }
+    public boolean isRental() {
+        return isRental;
     }
 }

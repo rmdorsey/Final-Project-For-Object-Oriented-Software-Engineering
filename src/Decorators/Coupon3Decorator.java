@@ -1,6 +1,7 @@
 package Decorators;
 
 import Interfaces.ISalesItem;
+import pos.SalesItem;
 import pos.ShoppingCart;
 
 public class Coupon3Decorator extends CouponDiscountDecorator {
@@ -15,10 +16,12 @@ public class Coupon3Decorator extends CouponDiscountDecorator {
 
         for (ShoppingCart shoppingCart : getCartCategoryList()) {
             for (ISalesItem item : shoppingCart.getCartItemList()) {
+                System.out.println(item.getPriceCode());
+                System.out.println(item.isRental());
 
-                if(cartPoints>=10) {
-                    //points gets reset to 0 after they're used for a free item
-                    cartPoints = 0;
+                if(cartPoints>=10 && (item.getPriceCode()==SalesItem.REGULAR_MOVIE || item.getPriceCode()==SalesItem.NEW_RELEASE_MOVIE || item.getPriceCode()==SalesItem.CHILDRENS_MOVIE) && item.isRental()) {
+                    //deduct 10 points after they're used for a free item
+                    cartPoints -= 10;
                     //free rental every 10 points
                     cartCostTotal += 0;
                 } else {
@@ -36,9 +39,9 @@ public class Coupon3Decorator extends CouponDiscountDecorator {
         int cartPointsTotal = 0;
         for (ShoppingCart shoppingCart : getCartCategoryList()) {
             for (ISalesItem item : shoppingCart.getCartItemList()) {
-                if(cartPointsTotal>=10) {
-                    //points gets reset to 0 after they're used for a free item
-                    cartPointsTotal = 0;
+                if(cartPointsTotal>=10 && (item.getPriceCode()==SalesItem.REGULAR_MOVIE || item.getPriceCode()==SalesItem.NEW_RELEASE_MOVIE || item.getPriceCode()==SalesItem.CHILDRENS_MOVIE) && item.isRental()) {
+                    //deduct 10 points after they're used for a free item
+                    cartPointsTotal -= 10;
                 } else {
                     cartPointsTotal += item.getPoints();
                 }
